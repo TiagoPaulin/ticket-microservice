@@ -21,4 +21,10 @@ public class EventService {
 
     }
 
+    public Event insert(Event obj) {
+
+        return repository.save(obj);
+
+    }
+
 }
