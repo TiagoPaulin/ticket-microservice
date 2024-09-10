@@ -50,5 +50,5 @@ public class EventType {
     public int hashCode() {
         return Objects.hash(id);
     }
-    
+
 }
