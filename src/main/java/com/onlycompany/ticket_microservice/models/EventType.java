@@ -2,6 +2,8 @@ package com.onlycompany.ticket_microservice.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +14,9 @@ public class EventType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
+
+    @OneToMany(mappedBy = "type", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Event> events = new ArrayList<>();
 
     public EventType() {}
 
@@ -36,6 +41,10 @@ public class EventType {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Event> getEvents() {
+        return events;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.onlycompany.ticket_microservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -20,6 +21,10 @@ public class Event {
     private LocalDate date;
     private LocalTime time;
 
+    @ManyToOne
+    @JoinColumn(name = "eventType_id")
+    @JsonIgnore
+    private EventType type;
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> tickets = new ArrayList<>();
 
@@ -77,6 +82,14 @@ public class Event {
 
     public List<Ticket> getTickets() {
         return tickets;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     @Override
