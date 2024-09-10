@@ -28,8 +28,10 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     EventTypeRepository eventTypeRepository;
 
+
     @Override
     public void run(String... args) throws Exception {
+/*
 
         Event event1 = new Event(null, "Festival de Música", "Um grande festival de música com bandas ao vivo.",
                 LocalDate.of(2024, 9, 20), LocalTime.of(18, 30));
@@ -61,6 +63,8 @@ public class TestConfig implements CommandLineRunner {
         eventTypeRepository.saveAll(Arrays.asList(eventType1, eventType2, eventType3));
         eventRepository.saveAll(Arrays.asList(event1, event2, event3));
         ticketRepository.saveAll(Arrays.asList(ticket1, ticket2, ticket3));
+
+    */
 
     }
 
