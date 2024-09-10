@@ -1,7 +1,9 @@
 package com.onlycompany.ticket_microservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +17,11 @@ public class Ticket {
     private Float value;
     private boolean verified;
     private boolean preSale;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    @JsonIgnore
+    private Event event;
 
     public Ticket() {}
 
@@ -66,6 +73,14 @@ public class Ticket {
 
     public void setPreSale(boolean preSale) {
         this.preSale = preSale;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     @Override
