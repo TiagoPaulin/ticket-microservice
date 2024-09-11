@@ -41,4 +41,13 @@ public class TicketController {
 
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Ticket> update (@PathVariable Long id, @RequestBody Ticket obj) {
+
+        obj = service.update(id, obj);
+
+        return ResponseEntity.ok().body(obj);
+
+    }
+
 }
