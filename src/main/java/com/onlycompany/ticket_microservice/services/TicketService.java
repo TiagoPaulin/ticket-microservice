@@ -28,4 +28,10 @@ public class TicketService {
 
     }
 
+    public void delete(Long id) {
+
+        repository.deleteById(id);
+
+    }
+
 }
