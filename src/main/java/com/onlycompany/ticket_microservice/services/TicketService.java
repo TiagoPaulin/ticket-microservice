@@ -22,4 +22,10 @@ public class TicketService {
 
     }
 
+    public Ticket insert(Ticket obj) {
+
+        return repository.save(obj);
+
+    }
+
 }

@@ -5,10 +5,7 @@ import com.onlycompany.ticket_microservice.models.Ticket;
 import com.onlycompany.ticket_microservice.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/ticket")
@@ -23,6 +20,15 @@ public class TicketController {
         Ticket ticket = service.findById(id);
 
         return ResponseEntity.ok().body(ticket);
+
+    }
+
+    @PostMapping
+    public ResponseEntity<Ticket> insert (@RequestBody Ticket obj) {
+
+        obj = service.insert(obj);
+
+        return ResponseEntity.ok().body(obj);
 
     }
 
