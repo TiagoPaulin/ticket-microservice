@@ -2,6 +2,7 @@ package com.onlycompany.ticket_microservice.services;
 
 import com.onlycompany.ticket_microservice.models.Event;
 import com.onlycompany.ticket_microservice.repositories.EventRepository;
+import com.onlycompany.ticket_microservice.services.exceptions.BadRequestException;
 import com.onlycompany.ticket_microservice.services.exceptions.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class EventService {
     }
 
     public Event insert(Event obj) {
+
+        validateEvent(obj);
 
         return repository.save(obj);
 
@@ -64,6 +67,24 @@ public class EventService {
         event.setName(obj.getName());
         event.setDate(obj.getDate());
         event.setTime(obj.getTime());
+
+    }
+
+    private void validateEvent(Event obj) {
+
+        if (isNullOrEmptyOrBlank(obj.getName()) || isNullOrEmptyOrBlank(obj.getDescription())) {
+
+            throw new BadRequestException("Field is required");
+
+        }
+
+
+
+    }
+
+    private boolean isNullOrEmptyOrBlank(String value) {
+
+        return value == null || value.trim().isEmpty();
 
     }
 
