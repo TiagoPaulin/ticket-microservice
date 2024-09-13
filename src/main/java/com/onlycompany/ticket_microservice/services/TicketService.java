@@ -3,6 +3,7 @@ package com.onlycompany.ticket_microservice.services;
 import com.onlycompany.ticket_microservice.models.Event;
 import com.onlycompany.ticket_microservice.models.Ticket;
 import com.onlycompany.ticket_microservice.repositories.TicketRepository;
+import com.onlycompany.ticket_microservice.services.exceptions.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class TicketService {
 
         Optional<Ticket> ticket = repository.findById(id);
 
-        return ticket.get();
+        return ticket.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
@@ -31,12 +32,24 @@ public class TicketService {
 
     public void delete(Long id) {
 
+        if (!repository.existsById(id)) {
+
+            throw new ResourceNotFoundException(id);
+
+        }
+
         repository.deleteById(id);
 
     }
 
     @Transactional
     public Ticket update(Long id, Ticket obj) {
+
+        if (!repository.existsById(id)) {
+
+            throw new ResourceNotFoundException(id);
+
+        }
 
         Ticket ticket = repository.getReferenceById(id);
 

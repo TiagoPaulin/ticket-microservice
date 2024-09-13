@@ -2,6 +2,7 @@ package com.onlycompany.ticket_microservice.services;
 
 import com.onlycompany.ticket_microservice.models.EventType;
 import com.onlycompany.ticket_microservice.repositories.EventTypeRepository;
+import com.onlycompany.ticket_microservice.services.exceptions.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class EventTypeService {
 
         Optional<EventType> type = repository.findById(id);
 
-        return type.get();
+        return type.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
@@ -30,12 +31,24 @@ public class EventTypeService {
 
     public void delete(Long id) {
 
+        if (!repository.existsById(id)) {
+
+            throw new ResourceNotFoundException(id);
+
+        }
+
         repository.deleteById(id);
 
     }
 
     @Transactional
     public EventType update(Long id, EventType obj) {
+
+        if (!repository.existsById(id)) {
+
+            throw new ResourceNotFoundException(id);
+
+        }
 
         EventType type = repository.getReferenceById(id);
 
