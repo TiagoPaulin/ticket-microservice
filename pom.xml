@@ -53,6 +53,13 @@
 			<version>8.0.33</version>
 		</dependency>
 
+		<!-- SQL Server JDBC Driver -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>11.2.1.jre8</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://ticket-it-server.database.windows.net:1433;database=ticketdb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: ticketadmin
+    password: Ticket@123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+
+server:
+  port: 9090
