@@ -1,0 +1,17 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "WEBSITE_SLOT_NAME": "Production",
+    "FUNCTIONS_EXTENSION_VERSION": "~4",
+    "ScmType": "None",
+    "WEBSITE_AUTH_ENABLED": "False",
+    "AzureWebJobs.typeEvent-get-list.Disabled": "1",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=ea1dad59-5b9b-4e21-8281-7b47720a11d5;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=53e9ab7b-03e8-4c7d-89ea-e7ffcb6e9778",
+    "WEBSITE_NODE_DEFAULT_VERSION": "20.9.0",
+    "AzureWebJobs.typeEvent-delete-a-list-item.Disabled": "1",
+    "AzureWebJobs.typeEvent-update-a-list-item.Disabled": "1",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "WEBSITE_SITE_NAME": "serverless-ticketit",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=ticketit9532;AccountKey=uKC2uNr4B+P5YZzKenqDJzNyATWjgzEeNgJhX3c2ELX5qlGFxCgfUbwttJmGID0wxwiNKsjchDWf+AStxdgbnQ==;EndpointSuffix=core.windows.net"
+  }
+}
