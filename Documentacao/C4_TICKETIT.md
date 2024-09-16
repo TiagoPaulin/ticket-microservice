@@ -18,9 +18,9 @@ C4Context
       }
 
       Boundary(AzureFunctions, "Azure Functions") {
-          Container(UserFunction, "UserFunction", "Azure Function", "Gerencia CRUD de usuários")
-          Container(PhoneFunction, "PhoneFunction", "Azure Function", "Gerencia CRUD de telefones de usuários")
-          ContainerDb(MongoDB, "MongoDB", "NoSQL Database", "Armazena dados de usuários e telefones")
+        Container(UserFunction, "UserFunction", "Azure Function", "Gerencia CRUD de usuários")
+        Container(PhoneFunction, "PhoneFunction", "Azure Function", "Gerencia CRUD de telefones de usuários")
+        ContainerDb(MongoDB, "MongoDB", "NoSQL Database", "Armazena dados de usuários e telefones")
       }
     }
 
@@ -44,23 +44,23 @@ C4Context
 
   Rel(Front, Back, "Comunica")
 
-  Rel(Back, API, "Comunica-se com")
+  BiRel(Back, API, "Comunica-se com")
   Rel(Back, AuthService, "Autentica usuários")
   Rel(Back, PaymentGateway, "Processa pagamentos")
   Rel(Back, MonitoringService, "Envia logs e métricas")
   
   Rel(API, CloudProvider, "Consome")
-  Rel(API, EventService, "Consome")
-  Rel(API, TicketService, "Consome")
-  Rel(API, EventTypeService, "Consome")
-  Rel(EventService, SQLDatabase, "Comunica")
-  Rel(TicketService, SQLDatabase, "Comunica")
-  Rel(EventTypeService, SQLDatabase, "Comunica")
+  BiRel(API, EventService, "Consome")
+  BiRel(API, TicketService, "Consome")
+  BiRel(API, EventTypeService, "Consome")
+  BiRel(EventService, SQLDatabase, "Comunica")
+  BiRel(TicketService, SQLDatabase, "Comunica")
+  BiRel(EventTypeService, SQLDatabase, "Comunica")
 
-  Rel(API, UserFunction, "Consome")
-  Rel(API, PhoneFunction, "Consome")
-  Rel(UserFunction, MongoDB, "Comunica")
-  Rel(PhoneFunction, MongoDB, "Comunica")
+  BiRel(API, UserFunction, "Consome")
+  BiRel(API, PhoneFunction, "Consome")
+  BiRel(UserFunction, MongoDB, "Comunica")
+  BiRel(PhoneFunction, MongoDB, "Comunica")
 
   UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="3")
 ```
