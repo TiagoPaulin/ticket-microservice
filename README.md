@@ -461,6 +461,8 @@ https://github.com/TiagoPaulin/ticket-microservice
 # DockerHub
 https://hub.docker.com/layers/gabrielfjess/ticket-microservice/latest/images/sha256:12c407e24fd61e58f86bd8ba6f734504d4b5bbb4f3cb99dabff0653bf5353b06?uuid=13474969-0C93-472D-BBEF-D665AE42D8E0
 
+___
+
 **EVIDÊNCIAS FUNCTIONS - TICKET.IT**
 
 # CRUD USER
