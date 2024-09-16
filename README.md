@@ -449,3 +449,6 @@ C4Context
 
   UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="3")
 ```
+
+## Modelo Lógico
+![LogicalDB](/Documentacao/imgs/modeloLogico.png)
