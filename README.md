@@ -392,9 +392,28 @@ C4Context
   Person(Validador, "Validador", "Responsável por validar a autenticidade dos ingressos.")
 
   Boundary(TicketItSystem, "Sistema Ticket.it") {
-    System(WebApp, "Aplicativo Web Ticket.it", "Interface onde compradores e vendedores interagem com a plataforma.")
-    System(API, "API Ticket.it", "Gerencia a lógica de negócios e comunicação com os serviços.")
-    System(Database, "Banco de Dados Ticket.it", "Armazena dados de usuários, transações e ingressos.")
+    Boundary(APITicket, "API - TICKET.IT") {
+      System(API, "API Ticket.it", "Gerencia a lógica de negócios e comunicação com os serviços.")
+
+      Boundary(MicroServicos, "MicroServiços"){
+        Container(EventService, "EventService", "Spring Boot", "Gerencia o CRUD de eventos")
+        Container(TicketService, "TicketService", "Spring Boot", "Gerencia o CRUD de ingressos")
+        Container(EventTypeService, "EventTypeService", "Spring Boot", "Gerencia o CRUD de tipos de eventos")
+        ContainerDb(SQLDatabase, "Banco de Dados SQL", "MySQL", "Armazena eventos, ingressos e tipos de eventos")
+      }
+
+      Boundary(AzureFunctions, "Azure Functions") {
+          Container(UserFunction, "UserFunction", "Azure Function", "Gerencia CRUD de usuários")
+          Container(PhoneFunction, "PhoneFunction", "Azure Function", "Gerencia CRUD de telefones de usuários")
+          ContainerDb(MongoDB, "MongoDB", "NoSQL Database", "Armazena dados de usuários e telefones")
+      }
+    }
+
+    Boundary(App, "Aplicação"){
+      Container(Front, "Front-End", "Angular", "Interface da aplicação.")
+      Container(Back, "Back-End", "Java", "Back-End da aplicação.")
+    }
+
     System(AuthService, "Serviço de Autenticação", "Gerencia a autenticação e segurança dos usuários.")
     System(MonitoringService, "Serviço de Monitoramento e Logs", "Monitora o desempenho do sistema e coleta logs.")
   }
@@ -404,15 +423,29 @@ C4Context
     System_Ext(PaymentGateway, "Gateway de Pagamento", "Processa transações financeiras com segurança.")
   }
 
-  Rel(Compradores, WebApp, "Compra ingressos por meio de")
-  Rel(Vendedores, WebApp, "Anuncia ingressos por meio de")
-  Rel(Validador, WebApp, "Valida ingressos por meio de")
-  Rel(WebApp, API, "Comunica-se com")
-  Rel(API, Database, "Lê e grava dados em")
-  Rel(API, AuthService, "Autentica usuários via")
-  Rel(API, PaymentGateway, "Processa pagamentos por meio de")
-  Rel(API, MonitoringService, "Envia logs e métricas para")
-  Rel(WebApp, CloudProvider, "Utiliza escalabilidade e balanceamento de carga fornecidos por")
+  Rel(Compradores, Front, "Compra ingressos")
+  Rel(Vendedores, Front, "Anuncia ingressos")
+  Rel(Validador, Front, "Valida ingressos")
 
-  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+  Rel(Front, Back, "Comunica")
+
+  Rel(Back, API, "Comunica-se com")
+  Rel(Back, AuthService, "Autentica usuários")
+  Rel(Back, PaymentGateway, "Processa pagamentos")
+  Rel(Back, MonitoringService, "Envia logs e métricas")
+
+  Rel(API, CloudProvider, "Consome")
+  Rel(API, EventService, "Consome")
+  Rel(API, TicketService, "Consome")
+  Rel(API, EventTypeService, "Consome")
+  Rel(EventService, SQLDatabase, "Comunica")
+  Rel(TicketService, SQLDatabase, "Comunica")
+  Rel(EventTypeService, SQLDatabase, "Comunica")
+
+  Rel(API, UserFunction, "Consome")
+  Rel(API, PhoneFunction, "Consome")
+  Rel(UserFunction, MongoDB, "Comunica")
+  Rel(PhoneFunction, MongoDB, "Comunica")
+
+  UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="3")
 ```
