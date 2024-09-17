@@ -648,3 +648,146 @@ body:
 url: https://serverless-ticketit.azurewebsites.net/api/phones/{id}?
 
 example: https://serverless-ticketit.azurewebsites.net/api/phones/009204b4-c6ec-49d7-b0d9-49d2f2c73bb6
+
+___
+
+**EVIDÊNCIAS MICROSERVIÇOS - TICKET.IT**
+
+# CRUD EVENTTYPE
+
+## CREATE (POST)
+
+url: http://localhost:8080/type
+
+body: 
+
+{
+
+  "description" : "Jogo"
+
+}
+
+## READ (GET)
+
+url: http://localhost:8080/type/1
+
+## UPDATE (PUT)
+
+url: http://localhost:8080/type/1
+
+body :
+
+{
+
+  "description" : "Teatro"
+
+}
+
+## DELETE (DELETE)
+
+url: http://localhost:8080/type/1
+
+# CRUD EVENT
+
+## CREATE (POST)
+
+url: http://localhost:8080/event
+
+body: 
+
+{
+  "name": "Concerto de Rock",
+  
+  "description": "Um grande concerto de rock com bandas famosas.",
+  
+  "date": "2024-10-05",
+  
+  "time": "20:00"
+  
+}
+
+## READ (GET)
+
+url: http://localhost:8080/event/1
+
+## UPDATE (PUT)
+
+url: http://localhost:8080/event/1
+
+body :
+
+{
+  "name": "Festival de Cinema",
+  
+  "description": "Exibição de filmes independentes de vários gêneros.",
+  
+  "date": "2024-11-15",
+  
+  "time": "18:30"
+}
+
+## DELETE (DELETE)
+
+url: http://localhost:8080/event/1
+
+# CRUD TICKET
+
+## CREATE (POST)
+
+url: http://localhost:8080/ticket
+
+body: 
+
+{
+
+  "quantity": 100,
+  
+  "value": 150.50,
+  
+  "verified": true,
+  
+  "preSale": false
+  
+}
+
+
+## READ (GET)
+
+url: http://localhost:8080/ticket/1
+
+## UPDATE (PUT)
+
+url: http://localhost:8080/ticket/1
+
+body :
+
+{
+
+  "quantity": 50,
+  
+  "value": 200.00,
+  
+  "verified": false,
+  
+  "preSale": true
+  
+}
+
+
+## DELETE (DELETE)
+
+url: http://localhost:8080/ticket/1
+
+___
+
+# ALUNOS
+
+Brunno Tatsuo
+
+Gabriel Felipe
+
+Luiz Penido
+
+Sidnei Henrique
+
+Tiago Paulin
