@@ -453,6 +453,8 @@ C4Context
 ## Modelo Lógico
 ![LogicalDB](/Documentacao/imgs/modeloLogico.png)
 
+Disponível no GitHub.
+
 ## LINKS
 
 # GitHub
