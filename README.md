@@ -371,6 +371,71 @@ O Ticket.it deve ser capaz de escalar conforme a demanda. O uso de cloud públic
 
 - **Aumento de capacidade**: O sistema deve ser capaz de escalar horizontalmente, criando novas instâncias conforme a demanda.
 
+## 10.8 Análise ATAM
+
+### Cenário 1
+
+Cenário: Revenda de ingressos durante picos de uso
+
+Atributos de qualidade:
+
+- Escalabilidade
+- Desempenho
+
+Decisão arquitetural:
+
+- Implementaçãode uma arquitetura baseada em microsserviços e containers.
+
+Trade-offs:
+
+- Aumento de custos durante picos
+- Maior complexidade na implementação e monitoramento dos microserviços
+
+Resultados:
+
+- O sistema mantém o tempo de resposta desejado e suporta a carga mantendo a disponibilidade e a experiência do usuário é de alta qualidade
+
+### Cenário 2
+
+Cenário: Recuperação de falhas no banco de dados em caso de falhas
+
+Atributos de qualidade:
+
+- Confiabilidade
+- Disponibilidade
+
+Decisão arquitetural:
+
+- Implementação de replicação automática de banco de dados entre diferentes zonas de disponibilidade na cloud pública. Caso falhe, o sistema faz uma restauração do banco para uma réplica de banco de dados com o mínimo de interrupção.
+
+Trade-offs:
+
+- Maior custo de operação devido à necessidade de múltiplas réplicas de banco de dados
+- Maior complexidade no gerenciamento de banco de dados e na sincronização entre réplicas podendo gerar falhas de consistência
+
+Resultados: Em caso de falha no banco de dados principal, o sistema faz restauração para uma réplica com uma interrupção mínima, sem perca grande de dados
+
+### Cenário 3
+
+Cenário: Experiência do usuário em dispositivos móveis
+
+Atributos de qualidade:
+
+- Usabilidade
+- Desempenho
+
+Decisão arquitetural:
+
+- Desenvolvimento da interface utilizando frameworks front-end responsivos para garantir que o layout se adapte a diferentes tamanhos de tela
+- Otimização do carregamento de recursos e uso de estratégias de lazy loading para evitar que grandes volumes de dados sejam carregados desnecessariamente
+
+Trade-offs:
+
+- A criação de uma interface completamente responsiva exigem um tempo de desenvolvimento maior e mais recursos
+- A otimização para dispositivos móveis pode exigir ajustes que impactam um pouco a experiência em dispositivos de desktop.
+
+Resultados: Satisfação maior por parte dos clientes móveis que estimamos ser a principal fonte de uso
+
 # 11. Riscos e Débito Técnico
 
 O gerenciamento de riscos e a gestão do débito técnico são componentes críticos na arquitetura de sistemas, fundamentais para garantir a estabilidade, a eficiência e a evolução contínua do sistema Ticket.it. Este tópico aborda os principais riscos associados ao sistema, que podem impactar sua operação e sucesso, e o débito técnico, que se refere às deficiências e compromissos técnicos que podem afetar a qualidade e a manutenção do sistema.
@@ -451,6 +516,7 @@ C4Context
 ```
 
 ## Modelo Lógico
+
 ![LogicalDB](/Documentacao/imgs/modeloLogico.png)
 
 Disponível no GitHub.
@@ -458,12 +524,14 @@ Disponível no GitHub.
 ## LINKS
 
 # GitHub
+
 https://github.com/TiagoPaulin/ticket-microservice
 
 # DockerHub
+
 https://hub.docker.com/layers/gabrielfjess/ticket-microservice/latest/images/sha256:12c407e24fd61e58f86bd8ba6f734504d4b5bbb4f3cb99dabff0653bf5353b06?uuid=13474969-0C93-472D-BBEF-D665AE42D8E0
 
-___
+---
 
 **EVIDÊNCIAS FUNCTIONS - TICKET.IT**
 
@@ -486,7 +554,6 @@ Fields:
     "password": "SENHA DO USUÁRIO"
 
 }
-
 
 ## CREATE (POST)
 
@@ -618,7 +685,6 @@ body:
 
 }
 
-
 ## READ (GET)
 
 url (get all): https://serverless-ticketit.azurewebsites.net/api/phones_get_phones
@@ -653,7 +719,7 @@ url: https://serverless-ticketit.azurewebsites.net/api/phones/{id}?
 
 example: https://serverless-ticketit.azurewebsites.net/api/phones/009204b4-c6ec-49d7-b0d9-49d2f2c73bb6
 
-___
+---
 
 **EVIDÊNCIAS MICROSERVIÇOS - TICKET.IT**
 
@@ -663,11 +729,11 @@ ___
 
 url: http://localhost:8080/type
 
-body: 
+body:
 
 {
 
-  "description" : "Jogo"
+"description" : "Jogo"
 
 }
 
@@ -683,7 +749,7 @@ body :
 
 {
 
-  "description" : "Teatro"
+"description" : "Teatro"
 
 }
 
@@ -697,17 +763,17 @@ url: http://localhost:8080/type/1
 
 url: http://localhost:8080/event
 
-body: 
+body:
 
 {
-  "name": "Concerto de Rock",
-  
-  "description": "Um grande concerto de rock com bandas famosas.",
-  
-  "date": "2024-10-05",
-  
-  "time": "20:00"
-  
+"name": "Concerto de Rock",
+
+"description": "Um grande concerto de rock com bandas famosas.",
+
+"date": "2024-10-05",
+
+"time": "20:00"
+
 }
 
 ## READ (GET)
@@ -721,13 +787,13 @@ url: http://localhost:8080/event/1
 body :
 
 {
-  "name": "Festival de Cinema",
-  
-  "description": "Exibição de filmes independentes de vários gêneros.",
-  
-  "date": "2024-11-15",
-  
-  "time": "18:30"
+"name": "Festival de Cinema",
+
+"description": "Exibição de filmes independentes de vários gêneros.",
+
+"date": "2024-11-15",
+
+"time": "18:30"
 }
 
 ## DELETE (DELETE)
@@ -740,20 +806,19 @@ url: http://localhost:8080/event/1
 
 url: http://localhost:8080/ticket
 
-body: 
+body:
 
 {
 
-  "quantity": 100,
-  
-  "value": 150.50,
-  
-  "verified": true,
-  
-  "preSale": false
-  
-}
+"quantity": 100,
 
+"value": 150.50,
+
+"verified": true,
+
+"preSale": false
+
+}
 
 ## READ (GET)
 
@@ -767,22 +832,21 @@ body :
 
 {
 
-  "quantity": 50,
-  
-  "value": 200.00,
-  
-  "verified": false,
-  
-  "preSale": true
-  
-}
+"quantity": 50,
 
+"value": 200.00,
+
+"verified": false,
+
+"preSale": true
+
+}
 
 ## DELETE (DELETE)
 
 url: http://localhost:8080/ticket/1
 
-___
+---
 
 # ALUNOS
 
