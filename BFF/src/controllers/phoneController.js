@@ -1,5 +1,4 @@
 const axios = require("axios");
-const Phone = require("../models/phoneModel");
 
 const API_URL = "https://serverless-ticketit.azurewebsites.net/api";
 

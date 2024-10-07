@@ -2,6 +2,7 @@ const axios = require("axios");
 const Ticket = require("../models/ticketModel");
 
 const API_URL = process.env.API_URL || "http://localhost:8080/ticket";
+const API_URL_SERVERLESS = "https://serverless-ticketit.azurewebsites.net/api/users";
 
 exports.getTicketById = async (req, res) => {
   try {
@@ -9,7 +10,8 @@ exports.getTicketById = async (req, res) => {
     const response = await axios.get(`${API_URL}/${id}`);
     const ticketData = response.data;
 
-    const ticket = new Ticket(ticketData.id, ticketData.quantity, ticketData.value, ticketData.verified, ticketData.preSale, ticketData.event);
+    const user = await axios.get(`${API_URL}/${ticketData.userId}`);
+    const ticket = new Ticket(ticketData.id, ticketData.quantity, ticketData.value, ticketData.verified, ticketData.preSale, ticketData.event, ticketData.userId, user.name);
 
     res.status(200).json(ticket);
   } catch (error) {
