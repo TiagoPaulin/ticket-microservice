@@ -23,6 +23,8 @@ public class Ticket {
     @JsonIgnore
     private Event event;
 
+    private Long userId;
+
     public Ticket() {}
 
     public Ticket(Long id, Integer quantity, Float value, boolean verified, boolean preSale) {
@@ -83,6 +85,13 @@ public class Ticket {
         this.event = event;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
