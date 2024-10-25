@@ -10,7 +10,7 @@ exports.getTicketById = async (req, res) => {
     const response = await axios.get(`${API_URL}/${id}`);
     const ticketData = response.data;
 
-    const user = await axios.get(`${API_URL}/${ticketData.userId}`);
+    const user = await axios.get(`${API_URL_SERVERLESS}/${ticketData.userId}`);
     const ticket = new Ticket(ticketData.id, ticketData.quantity, ticketData.value, ticketData.verified, ticketData.preSale, ticketData.event, ticketData.userId, user.name);
 
     res.status(200).json(ticket);
