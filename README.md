@@ -557,7 +557,7 @@ Fields:
 
 ## CREATE (POST)
 
-url: https://serverless-ticketit.azurewebsites.net/api/users?
+url: https://tde3teste.azurewebsites.net/api/users?
 
 body:
 
@@ -605,17 +605,16 @@ body:
 
 ## READ (GET)
 
-url (get all): https://serverless-ticketit.azurewebsites.net/api/users?
+url (get all): https://tde3teste.azurewebsites.net/api/users?
 
-url (get by id): https://serverless-ticketit.azurewebsites.net/api/users/{id}?
+url (get by id): https://tde3teste.azurewebsites.net/api/users/{id}?
 
-example: https://serverless-ticketit.azurewebsites.net/api/users/88864c19-2a10-4746-85a2-8f93e0af8f5b
+example: https://tde3teste.azurewebsites.net/api/users/88864c19-2a10-4746-85a2-8f93e0af8f5b
 
 ## UPDATE (PUT)
 
-url: https://serverless-ticketit.azurewebsites.net/api/users/{id}?
-
-example: https://serverless-ticketit.azurewebsites.net/api/users/88864c19-2a10-4746-85a2-8f93e0af8f5b
+url: https://tde3teste.azurewebsites.net/api/users/{id}?
+example: https://tde3teste.azurewebsites.net/api/users/88864c19-2a10-4746-85a2-8f93e0af8f5b
 
 body:
 
@@ -635,9 +634,9 @@ body:
 
 ## DELETE (DELETE)
 
-url: https://serverless-ticketit.azurewebsites.net/api/users/{id}?
+url: https://tde3teste.azurewebsites.net/api/users/{id}?
 
-example: https://serverless-ticketit.azurewebsites.net/api/users/77f69e12-c981-449b-a137-60081acd3b4f
+example: https://tde3teste.azurewebsites.net/api/users/77f69e12-c981-449b-a137-60081acd3b4f
 
 # CRUD PHONE
 
@@ -657,7 +656,7 @@ Fields:
 
 ## CREATE (POST)
 
-url: https://serverless-ticketit.azurewebsites.net/api/phones_create_a_phone?
+url: https://tde3teste.azurewebsites.net/api/phones_create_a_phone?
 
 body:
 
@@ -687,17 +686,17 @@ body:
 
 ## READ (GET)
 
-url (get all): https://serverless-ticketit.azurewebsites.net/api/phones_get_phones
+url (get all): https://tde3teste.azurewebsites.net/api/phones_get_phones?
 
-url (get by id): https://serverless-ticketit.azurewebsites.net/api/phones/{id}?
+url (get by id): https://tde3teste.azurewebsites.net/api/phones/{id}?
 
-example: https://serverless-ticketit.azurewebsites.net/api/phones/dc54b00e-be8c-4653-b602-6c6c360205f3
+example: https://tde3teste.azurewebsites.net/api/phones/dc54b00e-be8c-4653-b602-6c6c360205f3
 
 ## UPDATE (PUT)
 
-url: https://serverless-ticketit.azurewebsites.net/api/phone/{id}?
+url: https://tde3teste.azurewebsites.net/api/phone/{id}?
 
-example: https://serverless-ticketit.azurewebsites.net/api/phone/dc54b00e-be8c-4653-b602-6c6c360205f3
+example: https://tde3teste.azurewebsites.net/api/phone/dc54b00e-be8c-4653-b602-6c6c360205f3
 
 body:
 
