@@ -845,6 +845,9 @@ body :
 
 url: http://localhost:8080/ticket/1
 
+
+## AWS API GATEWAY
+https://us-east-2.console.aws.amazon.com/apigateway/main/api-detail?api=7nd4l44msl&region=us-east-2 
 ---
 
 # ALUNOS
